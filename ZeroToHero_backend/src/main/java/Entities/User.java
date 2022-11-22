@@ -8,8 +8,9 @@ public class User {
     private String email;
     private String country;
     private int age;
+    private Type user_type;
 
-    public User(int id, String username, String first_name, String last_name, String email, String country, int age) {
+    public User(int id, String username, String first_name, String last_name, String email, String country, int age, Type user_type) {
         Id = id;
         this.username = username;
         this.first_name = first_name;
@@ -17,6 +18,7 @@ public class User {
         this.email = email;
         this.country = country;
         this.age = age;
+        this.user_type = user_type;
     }
 
     public int getId() {
