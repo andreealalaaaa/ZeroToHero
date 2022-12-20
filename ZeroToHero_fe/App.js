@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
  
   forgot_button: {
-    height: 30,
+    height: 20,
     marginBottom: 30,
   },
  
