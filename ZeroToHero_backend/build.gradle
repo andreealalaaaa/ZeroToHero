@@ -12,6 +12,7 @@ apply plugin: 'io.spring.dependency-management'
 repositories {
     mavenCentral()
     google()
+    gradlePluginPortal()
 }
 
 dependencies {
@@ -21,7 +22,6 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
-    // the dependency for the Firebase SDK for Google Analytics
     implementation 'com.google.firebase:firebase-analytics'
     implementation "com.google.firebase:firebase-auth:9.6.1"
     implementation 'com.google.firebase:firebase-database:9.6.1'
