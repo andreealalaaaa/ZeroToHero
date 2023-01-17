@@ -1,87 +1,67 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
- 
-export default function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
- 
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email."
-          placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-        />
+import React, { useState } from 'react';
+import { View, TextInput, Button, StyleSheet, Dimensions } from 'react-native';
+
+import Header from './components/Header';
+
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const screen = Dimensions.get('screen');
+
+    return (
+      <View style={{flex: 1, backgroundColor: '#DFAEB4', alignContent: 'center'}}>
+        <Header title="ZeroToHero" />
+
+        <View style={styles.container}>  
+            <View style={styles.inputContainer}>
+                <TextInput 
+                    style={styles.input} 
+                    placeholder="Email/Username" 
+                    onChangeText={(text) => setEmail(text)} 
+                    value={email} 
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput 
+                    style={styles.input} 
+                    placeholder="Password" 
+                    secureTextEntry={true} 
+                    onChangeText={(text) => setPassword(text)} 
+                    value={password} 
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button title="Log In" color="#82667F" onPress={() => {}} />
+            </View>
+        </View>
       </View>
- 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
- 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
- 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    );
 }
- 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#DFAEB4",
-    alignItems: "center",
-    justifyContent: "center",
-  },
- 
-  inputView: {
-    backgroundColor: "#FFC0CB",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    marginBottom: 20,
- 
-    alignItems: "center",
-  },
- 
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
-    marginLeft: 20,
-  },
- 
-  forgot_button: {
-    height: 20,
-    marginBottom: 30,
-  },
- 
-  loginBtn: {
-    width: "80%",
-    borderRadius: 20,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 35,
-    backgroundColor: "#82667F",
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#DFAEB4',
+    },
+    inputContainer: {
+        width: '80%',
+        maxWidth: '80%',
+        marginVertical: 10,
+        top: '-10%',
+    },
+    input: {
+        padding: 10,
+        backgroundColor: '#fff',
+        borderRadius: 5,
+    },
+    buttonContainer: {
+        width: '80%',
+        maxWidth: '80%',
+        marginVertical: 10,
+        top: '-10%',
+    }
 });
+
+export default Login;
