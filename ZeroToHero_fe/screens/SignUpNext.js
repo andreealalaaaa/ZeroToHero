@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Dimensions, Alert, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Dimensions, Alert, Switch, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Header from '../components/Header1';
@@ -10,9 +9,10 @@ import Pressable from '../components/Pressable';
 export default Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isEnabled, setIsEnabled] = useState(false);
     const [hidePassword, setHidePassword] = useState(true);
     const passwordIcon = hidePassword ? require('../assets/images/hide-password.png') : require('../assets/images/show-password.png');
-
+    
     const screenHeight = Dimensions.get('window').height;
 
     const togglePassword = () => {
@@ -34,11 +34,11 @@ export default Login = () => {
                             <View style={styles.inputContainer}>
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="Email/Username"
+                                    placeholder="Username"
                                     onChangeText={(text) => setEmail(text)}
                                     value={email}
                                 />
-                                
+
                                 <View style={styles.pssw}>
                                     <TextInput
                                         style={styles.inputPsswd}
@@ -52,41 +52,30 @@ export default Login = () => {
                                     </TouchableOpacity>
                                 </View>
 
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
+                                    <Switch
+                                        value={isEnabled}
+                                        onValueChange={setIsEnabled}
+                                        trackColor={{ true: '#82667F', false: 'white' }}
+                                        thumbColor={isEnabled ? 'white' : '#82667F'}
+                                    />
+                                    <Text style={{ color: 'white', textAlign: 'center', fontSize: 15, alignSelf: 'center' }}> I agree to be a ZeroToHero member.</Text>
+                                </View>
+
                                 <View style={{ marginTop: 10 }}>
-                                    <Button title="Log In" color="#82667F" onPress={() => { }} />
+                                    <Button title="Register" color="#82667F" onPress={() => { }} />
                                 </View>
 
                             </View>
-
-                            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
-                                    <View>
-                                        <Text style={{ width: 130, textAlign: 'center' }}>Or continue with</Text>
-                                    </View>
-                                    <View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
-                                </View>
-
-                                <Pressable
-                                    style={{ borderRadius: 4 }}
-                                    activeOpacity={0.9}
-                                >
-                                    <Icon name="google" style={styles.icon}>
-                                        <Text style={styles.text} />
-                                    </Icon>
-                                </Pressable>
-                            </View>
-
 
                             <View style={styles.bottom}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
-                                    <Pressable onPress={() => { Alert.alert('Join us ;)') }}>
-                                        <Text style={styles.joinUs}>Join us</Text>
-                                    </Pressable>
-                                    <Text style={styles.text}> today and become</Text>
-                                </View>
+                                <View style={{ flexDirection: 'column', justifyContent: 'center', alignContent: 'center' }}>
+                                    <Text style={styles.text}> Already with us?</Text>
 
-                                <Text style={styles.text}> someone's hero!</Text>
+                                    <Pressable onPress={() => { Alert.alert('Join us ;)') }}>
+                                        <Text style={styles.joinUs}>Login here!</Text>
+                                    </Pressable>
+                                </View>
                             </View>
 
                         </View>
@@ -123,14 +112,6 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         backgroundColor: 'transparent',
         width: '87%',
-    },
-    icon: {
-        fontSize: 30,
-        backgroundColor: '#fff',
-        paddingVertical: 10,
-        paddingHorizontal: 40,
-        borderRadius: 5,
-        marginVertical: 20,
     },
     text: {
         fontSize: 25,

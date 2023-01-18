@@ -9,12 +9,16 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.14",
+    "@react-native-picker/picker": "^2.4.8",
+    "countries-list": "^2.6.1",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-android-keyboard-adjust": "^1.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-modal-dropdown": "^1.0.2",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-vector-icons": "^9.2.0"
   },
