@@ -40,6 +40,11 @@ namespace ZeroToHeroServices.Services
             await client.PostAsync("api/Users", content);
         }
 
-        public static async Task<User> GetUser(string )
+        public static async Task<User> GetUser(string username)
+        {
+            var json = await client.GetStringAsync($"api/Users/{username}");
+            var user = JsonConvert.DeserializeObject<User>(json);
+            return user;
+        }
     }
 }

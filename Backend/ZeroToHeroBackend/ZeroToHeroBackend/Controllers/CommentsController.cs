@@ -43,7 +43,7 @@ namespace ZeroToHeroBackend.Controllers
 
         //GET: api/Comments/Posts/id
         [HttpGet("posts/{id}")]
-        public ActionResult<IEnumerable<Post>> GetCommentsByPost(int id)
+        public ActionResult<IEnumerable<Comment>> GetCommentsByPost(int id)
         {
             var comments = _context.Comments.Where(p => p.PostId == id);
             return Ok(comments);
