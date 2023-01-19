@@ -8,7 +8,7 @@ import Header from '../components/Header1';
 import Pressable from '../components/Pressable';
 
 export default Login = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [hidePassword, setHidePassword] = useState(true);
     const psswdIcon = hidePassword ? 'eye' : 'eye-slash';
@@ -34,10 +34,9 @@ export default Login = () => {
                             <View style={styles.inputContainer}>
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="Email/Username"
-                                    onChangeText={(text) => setEmail(text)}
-                                    value={email}
-                                    inputMode='email'
+                                    placeholder="Username"
+                                    onChangeText={(text) => setUsername(text)}
+                                    value={username}
                                 />
                                 
                                 <View style={styles.pssw}>

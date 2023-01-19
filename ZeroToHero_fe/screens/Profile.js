@@ -8,7 +8,6 @@ import Header2 from '../components/Header2';
 import NavBar from '../components/NavBar';
 
 const Profile = props => {
-    const [isEnabled, setIsEnabled] = useState(false);
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#82667F' }}>
@@ -28,9 +27,9 @@ const Profile = props => {
 
                             <View style={styles.containerSwitch}>
                                 <ToggleSwitch
-                                    text={{ on: 'PRESENT', off: 'ABSENT', activeTextColor: 'white', inactiveTextColor: '#B7B8BA' }}
+                                    text={{ on: 'Posts', off: 'Wish List', activeTextColor: '#82667F', inactiveTextColor: '#B7B8BA' }}
                                     textStyle={{ fontWeight: 'bold' }}
-                                    color={{ indicator: 'white', active: 'rgba(32, 193, 173, 1)', inactive: 'rgba( 247, 247, 247, 1)', activeBorder: '#41B4A4', inactiveBorder: '#E9E9E9' }}
+                                    color={{ indicator: 'white', active: '#82667F', inactive: '#EACBD2', activeBorder: '#41B4A4', inactiveBorder: '#E9E9E9' }}
                                     active={true}
                                     disabled={false}
                                     width={80}

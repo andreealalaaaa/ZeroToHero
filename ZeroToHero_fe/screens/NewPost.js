@@ -23,7 +23,7 @@ const NewPost = props => {
                     style={[styles.input]}
                     placeholder="Type your wish..."
                     multiline={true}
-                    onChangeText={(wish) => setWish(wish)}
+                    onChangeText={(text) => setWish(text)}
                     value={wish}
                     autoCapitalize='sentences'
                     maxLength={350}
