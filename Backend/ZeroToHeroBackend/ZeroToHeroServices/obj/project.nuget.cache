@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/gbqV7nmgkaxSjQCUnDKFdXu+madLLGhLWxoxWB8T6P3wMRnLf9bjS+MfIsbKHfKmPHqt0zMJBSzpx+vw8t+Dw==",
+  "dgSpecHash": "79o4+Js9VCfYr9pegR+UN9TLzUxGABdEBzS21teNKc6McE6sXsvoQkmUVZ/gCox7y0+MzS2gUg+5hwoQWavPHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ludwi\\Desktop\\MSAProject\\Backend\\ZeroToHeroBackend\\ZeroToHeroServices\\ZeroToHeroServices.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ludwi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
