@@ -11,7 +11,7 @@ export default Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [hidePassword, setHidePassword] = useState(true);
-    const passwordIcon = hidePassword ? require('../assets/images/hide-password.png') : require('../assets/images/show-password.png');
+    const psswdIcon = hidePassword ? 'eye' : 'eye-slash';
 
     const screenHeight = Dimensions.get('window').height;
 
@@ -37,6 +37,7 @@ export default Login = () => {
                                     placeholder="Email/Username"
                                     onChangeText={(text) => setEmail(text)}
                                     value={email}
+                                    inputMode='email'
                                 />
                                 
                                 <View style={styles.pssw}>
@@ -48,11 +49,11 @@ export default Login = () => {
                                         value={password}
                                     />
                                     <TouchableOpacity onPress={togglePassword} style={styles.showpsswd}>
-                                        <Image source={passwordIcon} style={{ height: 30, width: 30, padding: 10 }} />
+                                        <Icon name={psswdIcon} size={30} color='#454545'/>
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={{ marginTop: 10 }}>
+                                <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
                                     <Button title="Log In" color="#82667F" onPress={() => { }} />
                                 </View>
 
@@ -131,6 +132,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         borderRadius: 5,
         marginVertical: 20,
+        borderWidth: 2,
+        borderColor: '#DFDFDF',
+        elevation: 5,
     },
     text: {
         fontSize: 25,

@@ -38,6 +38,7 @@ export default SignUp = () => {
                                     placeholder="Email"
                                     onChangeText={(text) => setEmail(text)}
                                     value={email}
+                                    inputMode='email'
                                 />
 
                                 <TextInput
@@ -77,7 +78,7 @@ export default SignUp = () => {
                                     <Text>Age: {selectedAge}</Text>
                                 </ModalDropdown>
 
-                                <View style={{ marginTop: 10 }}>
+                                <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
                                     <Button title="Next" color="#82667F" onPress={() => { }} />
                                 </View>
 

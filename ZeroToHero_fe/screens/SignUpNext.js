@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Dimensions, Alert, Switch, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Header from '../components/Header1';
 import Pressable from '../components/Pressable';
@@ -11,7 +12,7 @@ export default Login = () => {
     const [password, setPassword] = useState('');
     const [isEnabled, setIsEnabled] = useState(false);
     const [hidePassword, setHidePassword] = useState(true);
-    const passwordIcon = hidePassword ? require('../assets/images/hide-password.png') : require('../assets/images/show-password.png');
+    const psswdIcon = hidePassword ? 'eye' : 'eye-slash';
     
     const screenHeight = Dimensions.get('window').height;
 
@@ -48,7 +49,7 @@ export default Login = () => {
                                         value={password}
                                     />
                                     <TouchableOpacity onPress={togglePassword} style={styles.showpsswd}>
-                                        <Image source={passwordIcon} style={{ height: 30, width: 30, padding: 10 }} />
+                                        <Icon name={psswdIcon} size={30} color='#454545'/>
                                     </TouchableOpacity>
                                 </View>
 
@@ -62,7 +63,7 @@ export default Login = () => {
                                     <Text style={{ color: 'white', textAlign: 'center', fontSize: 15, alignSelf: 'center' }}> I agree to be a ZeroToHero member.</Text>
                                 </View>
 
-                                <View style={{ marginTop: 10 }}>
+                                <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
                                     <Button title="Register" color="#82667F" onPress={() => { }} />
                                 </View>
 
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#82667F',
         fontWeight: 'bold',
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
     },
     bottom: {
         flexDirection: 'column',
