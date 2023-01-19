@@ -1,0 +1,12 @@
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\bin\Debug\net6.0\ZeroToHeroServices.deps.json
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\bin\Debug\net6.0\ZeroToHeroServices.dll
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\bin\Debug\net6.0\ZeroToHeroServices.pdb
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.csproj.AssemblyReference.cache
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.AssemblyInfoInputs.cache
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.AssemblyInfo.cs
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.csproj.CoreCompileInputs.cache
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.dll
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\refint\ZeroToHeroServices.dll
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ZeroToHeroServices.pdb
+C:\Users\ludwi\Desktop\MSAProject\Backend\ZeroToHeroBackend\ZeroToHeroServices\obj\Debug\net6.0\ref\ZeroToHeroServices.dll
