@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Switch, Alert, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Switch, Alert, TouchableOpacity, Image, Console } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ToggleSwitch from 'rn-toggle-switch'
 
@@ -8,6 +8,8 @@ import Header2 from '../components/Header2';
 import NavBar from '../components/NavBar';
 
 const Profile = props => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const switchText= isEnabled ? 'Posts' : 'Wish List';
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#82667F' }}>
@@ -26,21 +28,20 @@ const Profile = props => {
                             </View>
 
                             <View style={styles.containerSwitch}>
-                                <ToggleSwitch
-                                    text={{ on: 'Posts', off: 'Wish List', activeTextColor: '#82667F', inactiveTextColor: '#B7B8BA' }}
-                                    textStyle={{ fontWeight: 'bold' }}
-                                    color={{ indicator: 'white', active: '#82667F', inactive: '#EACBD2', activeBorder: '#41B4A4', inactiveBorder: '#E9E9E9' }}
-                                    active={true}
-                                    disabled={false}
-                                    width={80}
-                                    radius={25}
-                                    onValueChange={(val) => {
-                                        /* your handler function... */
-                                    }}
+                                <Text style={{color: '#82667F', fontSize: 20, fontWeight: '500'}}>{switchText}</Text>
+                                <Switch
+                                    value={isEnabled}
+                                    style={{ width: 50, height: 30, alignSelf: 'center'}}
+                                    onValueChange={setIsEnabled}
+                                    trackColor={{ false: '#DFDFDF', true: '#DFDFDF' }}
+                                    thumbColor={isEnabled ? '#82667F' : '#82667F'}
                                 />
                             </View>
                         </View>
 
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignContent: 'center', alignItems: 'center', marginBottom: 20, backgroundColor: 'rgba(255, 255, 255, 0.25)' }}>
+                            <Text>AAAAAAAAAAAA</Text>
+                        </View>
 
                     </View>
 
@@ -60,8 +61,12 @@ styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     containerSwitch: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.25)',
+        padding: 5,
+        width: '50%',
+        borderRadius: 10,
     },
     text: {
         color: 'black',

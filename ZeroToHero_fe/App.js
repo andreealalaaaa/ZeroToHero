@@ -12,10 +12,10 @@ import Profile from './screens/Profile';
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginScreen />
+      {/* <LoginScreen /> */}
       {/* <SignUp /> */}
       {/* <SignUpNext /> */}
-      {/* <Home /> */}
+      <Home />
       {/* <Post /> */}
       {/* <NewPost currentUser='elizam'/> */}
       {/* <Profile name='Eliza' username='elizam'/> */}
