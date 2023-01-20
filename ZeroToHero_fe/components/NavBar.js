@@ -3,6 +3,22 @@ import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const NavBar = props => {
+    const handlePress = (string) => {
+        if (string == 'pen') {
+            // New Post
+            // props.navigation.navigate('Post');
+        } else if (string == 'user-alt') {
+            // Profile
+            // props.navigation.navigate('Profile');
+        } else if (string == 'sign-out-alt') {
+            // Sign Out
+            // props.navigation.navigate('Login');
+        } else if (string == 'chevron-circle-left '){
+            // Back button
+            // props.navigation.goBack();
+        }
+    }
+
     return (
         <View style={styles.navbar}>
             <TouchableOpacity style={styles.button} onPress={() => { /* do something */ }}>

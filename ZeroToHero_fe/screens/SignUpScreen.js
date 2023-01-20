@@ -6,6 +6,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import countries from 'countries-list';
 
 
+
 import Header from '../components/Header1';
 import Pressable from '../components/Pressable';
 
@@ -19,6 +20,20 @@ export default SignUp = () => {
     const ages = Array.from({ length: 83 }, (v, k) => k + 18);
     const ageOptions = ages.map(age => age.toString());
     const countriesOptions = Object.values(countries.countries).map(country => country.name);
+
+    const nextPage = () => {
+        if (email == '' || name == '' || country == '' || selectedAge == '') {
+            Alert.alert('Please enter all fields');
+        } else {
+            Alert.alert('Next page');
+            props.navigation.navigate('SignUp2');
+        }
+    }
+
+    const loginHere = () => {
+        // Alert.alert('Login here');
+        props.navigation.navigate('Login');
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#DFAEB4' }}>
@@ -79,7 +94,7 @@ export default SignUp = () => {
                                 </ModalDropdown>
 
                                 <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
-                                    <Button title="Next" color="#82667F" onPress={() => { }} />
+                                    <Button title="Next" color="#82667F" onPress={nextPage} />
                                 </View>
 
                             </View>
@@ -88,7 +103,7 @@ export default SignUp = () => {
                                 <View style={{ flexDirection: 'column', justifyContent: 'center', alignContent: 'center' }}>
                                     <Text style={styles.text}> Already with us?</Text>
 
-                                    <Pressable onPress={() => { Alert.alert('Join us ;)') }}>
+                                    <Pressable onPress={loginHere}>
                                         <Text style={styles.joinUs}>Login here!</Text>
                                     </Pressable>
                                 </View>
