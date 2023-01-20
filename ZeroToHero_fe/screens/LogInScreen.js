@@ -3,20 +3,49 @@ import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Dimensions,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+// import { useNavigation } from '@react-navigation/native';
 
 import Header from '../components/Header1';
 import Pressable from '../components/Pressable';
+import { useEffect } from 'react';
 
 export default Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [profile, setProfile] = useState({});
     const [hidePassword, setHidePassword] = useState(true);
     const psswdIcon = hidePassword ? 'eye' : 'eye-slash';
 
     const screenHeight = Dimensions.get('window').height;
+    // const navigation = useNavigation();
 
     const togglePassword = () => {
         setHidePassword(!hidePassword);
+    }
+
+    const handleLogin = () => {
+        if (username == '' || password == '') {
+            Alert.alert('Please enter username and password');
+        } else {
+            fetch('https://zerotoheroapp.azurewebsites.net/api/Users/' + {username} )
+                .then(response => { return response.json() })
+                .then(responseJson => {
+                    setProfile([responseJson]);
+                    const user = profile.find(user => user.password === password);
+                    console.log(user);
+                    if (user) {
+                        Alert.alert('Logged in successfully');
+                        // navigation.navigate('Home');
+                    } else {
+                        Alert.alert('Wrong password');
+                    }
+                });
+        }
+    }
+
+    const joinUs = () => {
+        Alert.alert('Join us');
+        props.navigation.navigate('SignUp');
     }
 
     return (
@@ -38,7 +67,7 @@ export default Login = () => {
                                     onChangeText={(text) => setUsername(text)}
                                     value={username}
                                 />
-                                
+
                                 <View style={styles.pssw}>
                                     <TextInput
                                         style={styles.inputPsswd}
@@ -48,12 +77,12 @@ export default Login = () => {
                                         value={password}
                                     />
                                     <TouchableOpacity onPress={togglePassword} style={styles.showpsswd}>
-                                        <Icon name={psswdIcon} size={30} color='#454545'/>
+                                        <Icon name={psswdIcon} size={30} color='#454545' />
                                     </TouchableOpacity>
                                 </View>
 
                                 <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
-                                    <Button title="Log In" color="#82667F" onPress={() => { }} />
+                                    <Button title="Log In" color="#82667F" onPress={handleLogin} />
                                 </View>
 
                             </View>
@@ -70,6 +99,7 @@ export default Login = () => {
                                 <Pressable
                                     style={{ borderRadius: 4 }}
                                     activeOpacity={0.9}
+                                    onPress={() => { Alert.alert('Feature unavailable at the moment. We\'re sorry :)') }}
                                 >
                                     <Icon name="google" style={styles.icon}>
                                         <Text style={styles.text} />
@@ -80,7 +110,7 @@ export default Login = () => {
 
                             <View style={styles.bottom}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
-                                    <Pressable onPress={() => { Alert.alert('Join us ;)') }}>
+                                    <Pressable onPress={() => { joinUs }}>
                                         <Text style={styles.joinUs}>Join us</Text>
                                     </Pressable>
                                     <Text style={styles.text}> today and become</Text>

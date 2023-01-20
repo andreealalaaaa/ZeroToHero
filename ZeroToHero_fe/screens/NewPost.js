@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useNavigation } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, ImageBackground, Dimensions, Alert, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 import Header2 from '../components/Header2';
 import NavBar from '../components/NavBar';
@@ -8,7 +9,29 @@ import Pressable from '../components/Pressable';
 
 const NewPost = props => {
     const [wish, setWish] = useState('');
-    const screenWidth = Dimensions.get('window').width;
+    // const navigation = useNavigation();
+
+    const post = {
+        Username: props.currentUser,
+        Text: wish
+    }
+
+    const AddPost = () => {
+        fetch('https://zerotoheroapp.azurewebsites.net/api/Posts', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(post)
+        })
+            .then(() => {
+                // clear the text input
+                setWish('');
+                // nav to Home screen
+                // props.navigation.navigate('Home');
+            });
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#82667F' }}>
@@ -29,12 +52,11 @@ const NewPost = props => {
                     maxLength={350}
                     textAlignVertical='top'
                 />
-                {/* <View style={{margin: 10}}>
-                    <Button title="Post Wish" color="#82667F" onPress={() => { }} />
-                </View> */}
+
                 <Pressable
                     style={{ borderRadius: 4 }}
-                    activeOpacity={0.9}
+                    activeOpacity={0.95}
+                    onPress={AddPost}
                 >
                     <Text style={styles.button}>Post Wish</Text>
                 </Pressable>
@@ -85,9 +107,9 @@ styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontWeight: 'bold',
-        borderWidth: 2, 
-        borderRadius: 5, 
-        borderColor: '#72596F', 
+        borderWidth: 2,
+        borderRadius: 5,
+        borderColor: '#72596F',
         elevation: 5,
     }
 });

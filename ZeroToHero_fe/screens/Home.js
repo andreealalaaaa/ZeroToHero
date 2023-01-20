@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, ScrollView } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
 import Header2 from '../components/Header2';
 import NavBar from '../components/NavBar';
 
 export default Home = () => {
     const [posts, setPosts] = useState([]);
-    db = [{ "username": "emartuica", "text": "heihei", "postId": 2 }, { "username": "andreealalaaaa", "text": "heiheihei", "postId": 3 }, { "username": "andreealalaaaa", "text": "heiheiheihei", "postId": 4 }, { "username": "andreealalaaaa", "text": "heiheiheiheihei", "postId": 5 }]
-    // useEffect(() => {
-    //     // fetch('https://zerotoheroapp.azurewebsites.net/api/Posts')
-    //         .then(response => { return response.json() })
-    //         .then(responseJson => {
-    //             setPosts(responseJson);
-    //         }
-    //         );
-    // }, []);
+
+    useEffect(() => {
+        fetch('https://zerotoheroapp.azurewebsites.net/api/Posts')
+            .then(response => { return response.json() })
+            .then(responseJson => {
+                setPosts(responseJson);
+            }
+            );
+    }, []);
+
+    const commentsClick = () => {
+        Alert.alert('Comments');
+        // props.navigation.navigate('Post');
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#82667F' }}>
             <Header2 title="ZeroToHero" />
 
             <ScrollView contentContainerStyle={styles.container}>
-                {db.map((item) => {
+                {posts.map((item) => {
                     return (
                         <View key={item.postId} style={styles.post}>
                             <View style={styles.usernameContainer}>
@@ -34,13 +40,11 @@ export default Home = () => {
                                 {item.text}
                             </Text>
 
-                            <View style={{ flexDirection: 'row', margin: 10, backgroundColor: 'black', }}>
+                            <View style={{ flexDirection: 'row', margin: 10, backgroundColor: 'transparent', width: '100%', justifyContent: 'flex-end', paddingHorizontal: 10 }}>
                                 <View style={styles.buttons}>
-                                    <Icon name='heart' size={30} color='#82667F' />
-                                </View>
-
-                                <View style={styles.buttons}>
-                                    <Icon name='comment' size={30} color='#82667F' />
+                                    <TouchableOpacity onPress={commentsClick} >
+                                        <Icon name='comment' size={35} color='#82667F' />
+                                    </TouchableOpacity>
                                 </View>
                             </View>
 
@@ -57,7 +61,6 @@ export default Home = () => {
 
 styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#EACBD2',
     },
     post: {
@@ -93,17 +96,17 @@ styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#82667F',
-        width: '97%',
+        width: '95%',
     },
     buttons: {
         alignContent: 'center',
         alignItems: 'center',
         backgroundColor: '#EACBD2',
-        padding: 10,
+        paddingVertical: 5,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#82667F',
         elevation: 5,
-        width: '20%',
+        width: '25%',
     },
 });

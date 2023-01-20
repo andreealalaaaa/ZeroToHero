@@ -4,20 +4,51 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 import Header from '../components/Header1';
 import Pressable from '../components/Pressable';
 
-export default Login = () => {
-    const [email, setEmail] = useState('');
+const SignUpNext = props => {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isEnabled, setIsEnabled] = useState(false);
     const [hidePassword, setHidePassword] = useState(true);
     const psswdIcon = hidePassword ? 'eye' : 'eye-slash';
+
+    const userProfile = {
+        Username: username,
+        Password: password,
+        Email: props.email,
+        FirstName: props.name,
+        LastName: 'Gica',
+        Country: props.country,
+        Age: props.selectedAge
+    }
     
     const screenHeight = Dimensions.get('window').height;
 
     const togglePassword = () => {
         setHidePassword(!hidePassword);
+    }
+
+    const Register = () => {
+        fetch('https://zerotoheroapp.azurewebsites.net/api/Users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(() => {
+                // nav to Home screen
+                props.navigation.navigate('Home');
+            });
+    }
+
+    const loginHere = () => {
+        // Alert.alert('Login here');
+        props.navigation.navigate('Login');
     }
 
     return (
@@ -36,8 +67,8 @@ export default Login = () => {
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Username"
-                                    onChangeText={(text) => setEmail(text)}
-                                    value={email}
+                                    onChangeText={(text) => setUsername(text)}
+                                    value={username}
                                 />
 
                                 <View style={styles.pssw}>
@@ -64,7 +95,7 @@ export default Login = () => {
                                 </View>
 
                                 <View style={{ marginTop: 10, borderWidth: 2, borderRadius: 5, borderColor: '#72596F', elevation: 5 }}>
-                                    <Button title="Register" color="#82667F" onPress={() => { }} />
+                                    <Button title="Register" color="#82667F" onPress={Register} />
                                 </View>
 
                             </View>
@@ -73,7 +104,7 @@ export default Login = () => {
                                 <View style={{ flexDirection: 'column', justifyContent: 'center', alignContent: 'center' }}>
                                     <Text style={styles.text}> Already with us?</Text>
 
-                                    <Pressable onPress={() => { Alert.alert('Join us ;)') }}>
+                                    <Pressable onPress={loginHere}>
                                         <Text style={styles.joinUs}>Login here!</Text>
                                     </Pressable>
                                 </View>
@@ -149,3 +180,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     }
 });
+
+export default SignUpNext;
